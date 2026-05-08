@@ -4,14 +4,15 @@ from sqlalchemy import Table, select
 from pydantic import BaseModel 
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
-from datetime import datetime
-import pandas as pd
-import pytz
+from dotenv import load_dotenv
 import os
 
 
+
 # Configurar la base de datos
+load_dotenv()  
 SQLALCHEMY_DATABASE_URL = os.environ.get("SQLALCHEMY_DATABASE_URL")
+print("URL de BD:", SQLALCHEMY_DATABASE_URL)
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 metadata = MetaData()
 

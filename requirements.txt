@@ -3,10 +3,9 @@ uvicorn
 databases
 sqlalchemy
 aiosqlite
-pandas
 python-multipart
 pymysql
 pyngrok
-pytz
 cryptography
 psycopg2-binary
+python-dotenv
