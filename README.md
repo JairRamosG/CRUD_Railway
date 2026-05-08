@@ -1,6 +1,6 @@
 # FastAPI CRUD API con PostgreSQL y Railway
 
-Este proyecto es una API REST funcional construida con **FastAPI**, **SQLAlchemy Core** y **PostgreSQL**.  
+Esta plantilla es una API REST funcional construida con **FastAPI**, **SQLAlchemy Core** y **PostgreSQL**.  
 Referencia para futuros proyectos de Forecasting:
 
 - Operaciones CRUD completas (Crear, Leer, Actualizar, Eliminar) sobre una tabla `items`.
