@@ -1,9 +1,8 @@
 import uvicorn
 from fastapi import FastAPI, HTTPException, status
-from sqlalchemy import Table, select
-from pydantic import BaseModel 
-from sqlalchemy import create_engine, MetaData
+from sqlalchemy import Table, select, Column, Integer, String, Text, create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
+from pydantic import BaseModel 
 from dotenv import load_dotenv
 import os
 
@@ -16,8 +15,16 @@ print("URL de BD:", SQLALCHEMY_DATABASE_URL)
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 metadata = MetaData()
 
-# Cargar la tabla existente
-items = Table("items", metadata, autoload_with=engine)
+# Definir la tabla items explícitamente (en lugar de autoload)
+items = Table(
+    'items', metadata,
+    Column('id', Integer, primary_key=True, autoincrement=True),
+    Column('name', String(255), nullable=False),
+    Column('description', Text, nullable=True)
+)
+
+# Crear la tabla si no existe
+metadata.create_all(engine)
 
 # Configurar la sesión de SQLAlchemy
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
