@@ -1,12 +1,17 @@
+import uvicorn
 from fastapi import FastAPI, HTTPException, status
-from pydantic import BaseModel
-from sqlalchemy import create_engine, MetaData, Table
+from sqlalchemy import Table, select
+from pydantic import BaseModel 
+from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.sql import select
+from datetime import datetime
+import pandas as pd
+import pytz
+import os
 
 
 # Configurar la base de datos
-SQLALCHEMY_DATABASE_URL = ""
+SQLALCHEMY_DATABASE_URL = os.environ.get("SQLALCHEMY_DATABASE_URL")
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 metadata = MetaData()
 
